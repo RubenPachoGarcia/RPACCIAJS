@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="script/alertFunction.js"></script>
+</head>
+<body>
+	<button onclick="introducirPalabra()">Introducir palabra</button>
+	<br>
+	<p>Intentos:</p>
+	<button onclick="tiempo()">Tiempo</button>
+	<p>Palabra:<p id="palabraAsteriscos">palabraAsteriscos</p></p>
+	<button onclick="letra()">Letra</button>
+	<br><br>
+	<table border="solid">
+		<thead>
+			<tr>
+				<td></td>
+				<td>Historial</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><b>Palabra</b></td>
+				<td><b>Intentos</b></td>
+				<td><b>Tiempo</b></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="script/alertFunction.js"></script>
+</head>
+<body>
+	<button onclick="aniadirEnvio()">Añadir envio</button>
+	<button onclick="quitarEnvio()">Quitar envio</button>
+	<br>
+	<h1>Proximo envio</h1>
+	<div id="envios">
+		<p>envio</p>
+	</div>
+	<h1>Lista de envios</h1>
+	<table border="solid">
+		<thead>
+			<tr>
+				<td>Usuario</td>
+				<td>Coste</td>
+				<td>Fecha de entrada</td>
+				<td>Fecha de salida</td>
+ 			</tr>
+ 		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<div id="nombreCompleto">
+						<p>nombreCompleto</p>
+					</div>
+				</td>
+				<td>
+					<div id="costeEnvio">
+						<p>costeEnvio</p>
+					</div>
+				</td>
+				<td>
+					<div id="fechaEntrada">
+						<p>fechaEntrada</p>
+					</div>
+				</td>
+				<td>
+					<div id="fechaSalida">
+						<p>fechaSalida</p>
+					</div>
+				</td>
+ 			</tr>
+		</tbody>
+		<tfoot>
+		</tfoot>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+* Clase (1 hora), Recreo (30 minutos), Comida (45 minutos), Transporte (20 minutos), Dormir (8 horas) y Ejercicio (1h
+30min)
+*/
+const duracion = [0, "1 hora", "30 minutos", "45 minutos", "20 minutos", "8 horas", "1 hora y media"]
+const actividades = [0, "Clase", "Recreo", "Comida", "Transporte", "Dormir", "Ejercicio"]
+var lista = []
+function anyadir() {
+let actividad;
+let pedido;
+const hoy = new Date()
+do {
+actividad = prompt("Introduzca: \nClase:1 \nRecreo:2 \nComida:3 \nTransporte:4 \nDormir:5 \nEjercicio:6")
+}
+while (actividad < 1 || actividad> 6)
+
+	do {
+	pedido = prompt("introduzca el día(dd/mm/yyyy)")
+	pedido = pedido.split("/")
+	dia = new Date(pedido[2], pedido[1] - 1, pedido[0])
+	}
+	while (dia.getTime() < hoy.getTime() ) let diferencia=dia.getTime()-hoy.getTime() //ms
+		diferencia=diferencia/(1000*60*60) //horas diferencia=Math.trunc(diferencia) console.log(diferencia)
+		guardar(actividades[actividad], duracion[actividad], dia, diferencia) } function guardar (actividad, tiempo,
+		dia, resta){ if (lista.length>4){
+		lista.splice(0,1)}
+
+		lista.push([actividad, tiempo, dia, resta])
+
+		mostrar()
+
+
+		}
+
+
+		function mostrar(){
+		const ruta = document.getElementById("tabla")
+		let escritura = ""
+		ruta.innerHTML = ""
+		let aux = 999999999999999999999;
+
+		for (let i=0;i<lista.length;i++){ escritura="" escritura+="<td>" +lista[i][0]+"</td>"
+			escritura+= "<td>"+lista[i][1]+"</td>"
+			escritura += "<td>"+lista[i][2].toLocaleDateString()+"</td>"
+			ruta.innerHTML+= "<tr>"+escritura+"</tr>"
+			if (lista[i][3]<aux){ aux=lista[i][3]; } } console.log(aux)
+				document.getElementById("restante").innerHTML=`Faltan ${aux} horas para la siguiente actividad` }
+				function eliminar(){ let diaEliminar=prompt ("Introduce el día a eliminar, dd/MM/yyyy")
+				diaEliminar=diaEliminar.split("/") const fechaEliminar=new Date (diaEliminar[2], diaEliminar[1]-1,
+				diaEliminar[0]) lista=lista.filter( (trocito)=>trocito[2].getTime()!=fechaEliminar.getTime())
+				mostrar()
+				}
+
+				/*-->
